@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router";
 import useNameStore from "../states/name";
 import useMessageStore from "../states/messages";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   AppBar,
   Body,
   BottomBar,
+  BottomRef,
   Button,
   Container,
   Form,
@@ -21,6 +22,9 @@ function Chat() {
   const { name } = useNameStore();
   const { messages, appendNewMessage } = useMessageStore();
   const [message, setMessage] = useState<string>("");
+
+  const bottomRef = useRef<HTMLDivElement>(null);
+
   const navigator = useNavigate();
 
   useEffect(() => {
@@ -44,6 +48,12 @@ function Chat() {
     };
   }, []);
 
+  useEffect(() => {
+    if (bottomRef.current) {
+      bottomRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
   return (
     <Container>
       <AppBar>
@@ -60,6 +70,7 @@ function Chat() {
             </>
           ),
         )}
+        <BottomRef ref={bottomRef}></BottomRef>
       </Body>
       <BottomBar>
         <Form

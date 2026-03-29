@@ -48,11 +48,11 @@ export const Message = styled.div<MessageProps>`
   height: auto;
   padding-top: 1vh;
   padding-bottom: 1vh;
-  padding-left: 1vw;
-  padding-right: 1vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
   margin-bottom: 1vw;
   border-radius: ${({ author }) =>
-    author === "me" ? "3rem 0rem 3rem 3rem" : "0rem 3rem 3rem 3rem"};
+    author === "me" ? "2rem 0rem 2rem 2rem" : "0rem 2rem 2rem 2rem"};
   background-color: ${({ author }) => (author === "me" ? "indigo" : "gray")};
 `;
 
@@ -60,6 +60,8 @@ export const Name = styled.span`
   color: white;
   margin-bottom: 0.1vw;
 `;
+
+export const BottomRef = styled.div``;
 
 export const BottomBar = styled.div`
   flex: 3;
@@ -76,6 +78,7 @@ export const Input = styled.input`
   border: none;
   border-radius: 5rem;
   padding-left: 2vh;
+  padding-right: 2vh;
   margin-right: 2vw;
   width: 50vw;
   height: 5vh;
